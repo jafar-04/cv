@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>-</title>
+    <style>
+      :root {
+        --primary-color: #0f172a; /* Deep Slate Blue */
+        --secondary-color: #b45309; /* Deep Amber/Gold */
+        --text-dark: #1e293b;
+        --text-light: #475569;
+        --sidebar-bg: #f8fafc;
+        --border-color: #cbd5e1;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #e2e8f0;
+        color: var(--text-dark);
+        line-height: 1.5;
+        padding: 20px 10px;
+        text-align: justify;
+      }
+
+      .action-bar {
+        width: 100%;
+        max-width: 850px;
+        margin: 0 auto 20px auto;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .print-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        width: 100%;
+      }
+
+      @media (min-width: 600px) {
+        .print-btn {
+          width: auto;
+        }
+        body {
+          padding: 40px 20px;
+        }
+      }
+
+      .cv-container {
+        width: 100%;
+        max-width: 850px;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar {
+        background-color: var(--sidebar-bg);
+        padding: 30px 20px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .main-content {
+        padding: 30px 20px;
+        background-color: white;
+      }
+
+      @media (min-width: 800px) {
+        .cv-container {
+          width: 210mm;
+          min-height: 297mm;
+          display: grid;
+          grid-template-columns: 260px 1fr;
+        }
+        .sidebar {
+          padding: 40px 25px;
+          border-bottom: none;
+          border-right: 1px solid var(--border-color);
+        }
+        .main-content {
+          padding: 40px;
+        }
+      }
+
+      .header-section {
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--sidebar-bg);
+        padding-bottom: 15px;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      @media (min-width: 600px) {
+        h1 {
+          font-size: 32px;
+        }
+      }
+
+      .subtitle {
+        color: var(--secondary-color);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 3px;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 4px;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 12px;
+      }
+
+      @media (min-width: 800px) {
+        .info-grid {
+          display: block;
+        }
+      }
+
+      .info-group {
+        margin-bottom: 15px;
+      }
+
+      .info-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--text-light);
+        text-transform: uppercase;
+      }
+
+      .info-value {
+        font-size: 13.5px;
+        color: var(--text-dark);
+        word-break: break-word;
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 8px;
+      }
+
+      @media (min-width: 800px) {
+        .skills-container {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .skill-item {
+        background: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        border-left: 3px solid var(--secondary-color);
+        border-top: 1px solid #f1f5f9;
+        border-right: 1px solid #f1f5f9;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .skill-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .timeline-item {
+        margin-bottom: 20px;
+      }
+
+      .item-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .item-subtitle {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--secondary-color);
+      }
+
+      .item-date {
+        font-size: 12px;
+        color: var(--text-light);
+        margin-bottom: 6px;
+      }
+
+      .item-description {
+        font-size: 13.5px;
+        color: var(--text-dark);
+      }
+
+      .bullet-list {
+        margin-top: 6px;
+        padding-left: 18px;
+      }
+
+      .bullet-list li {
+        font-size: 13.5px;
+        color: var(--text-dark);
+        margin-bottom: 4px;
+      }
+
+      .badge {
+        display: inline-block;
+        background-color: #f1f5f9;
+        color: var(--primary-color);
+        border: 1px solid var(--border-color);
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+
+      @media print {
+        body {
+          background-color: white;
+          padding: 0;
+          margin: 0;
+        }
+        .action-bar {
+          display: none;
+        }
+        .cv-container {
+          box-shadow: none;
+          width: 210mm;
+          height: 297mm;
+          display: grid;
+          grid-template-columns: 260px 1fr;
+        }
+        .sidebar {
+          background-color: var(--sidebar-bg) !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          padding: 40px 25px;
+        }
+        .skills-container {
+          display: flex;
+          flex-direction: column;
+        }
+        .info-grid {
+          display: block;
+        }
+        .main-content {
+          padding: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="action-bar">
+      <button class="print-btn" onclick="window.print()">
+        Print / Save as PDF
+      </button>
+    </div>
+
+    <div class="cv-container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="section">
+          <h2>Contact</h2>
+          <div class="info-grid">
+            <div class="info-group">
+              <div class="info-label">Email</div>
+              <div class="info-value">jaafarasaad04@gmail.com</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Phone</div>
+              <div class="info-value">07823145510</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Location</div>
+              <div class="info-value">Nasiriyah, Iraq</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">LinkedIn</div>
+              <div class="info-value">
+                <a
+                  href="https://www.linkedin.com/in/jaafar-asaad-a4917131a/"
+                  target="_blank"
+                  >linkedin.com/in/jaafar-asaad-a4917131a</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Languages</h2>
+          <div class="info-grid">
+            <div class="info-group">
+              <div class="info-value" style="font-weight: 600">Arabic</div>
+              <div class="info-label">Native</div>
+            </div>
+            <div class="info-group">
+              <div class="info-value" style="font-weight: 600">English</div>
+              <div class="info-label">Professional proficiency</div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <h2>Coding Profile</h2>
+          <div class="info-grid">
+            <div class="info-group">
+              <div class="info-value" style="font-weight: 600">LeetCode</div>
+              <div class="info-label">
+                <a href="https://leetcode.com/u/JafarAsaad/" target="_blank"
+                  >leetcode.com/u/JafarAsaad/</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Skills</h2>
+          <div class="skills-container">
+            <div class="skill-item"><div class="skill-name">Techlog</div></div>
+            <div class="skill-item">
+              <div class="skill-name">Microsoft Office</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Python</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">Golden Software Surfer</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">JavaScript</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name">HTML5 / CSS3</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <div class="header-section">
+          <h1 contenteditable="true">Jaafar Asaad</h1>
+          <div class="subtitle">Applied Geology Graduate</div>
+        </div>
+
+        <div class="section">
+          <h2>Profile Summary</h2>
+          <p class="item-description">
+            Applied Geology graduate from the University of Thi Qar with
+            practical experience processing raw subsurface data and well logs
+            using Techlog. I have a strong passion for coding and am
+            consistently focused on learning new specialized software
+            applications related directly to the geological and operational
+            field.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Education</h2>
+          <div class="timeline-item">
+            <div class="item-title">Bachelor of Science in Applied Geology</div>
+            <div class="item-subtitle">
+              University of Thi Qar — College of Science
+            </div>
+            <div class="item-date">Graduated: June 2026</div>
+            <p class="item-description" style="margin-bottom: 6px">
+              Completed core academic curriculum including specific coursework
+              in:
+            </p>
+            <ul
+              class="bullet-list"
+              style="list-style-type: none; padding-left: 0"
+            >
+              <li>• Well Logging and Petrophysical Interpretation.</li>
+              <li>• Geology of Iraq and Main Formations in Iraq.</li>
+              <li>• Structural Mapping and Reservoir Evaluation.</li>
+              <li>
+                • Applications of Computational Tools in Geological Datasets
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Technical Projects</h2>
+          <div class="timeline-item">
+            <div class="item-title">
+              Applying Artificial Intelligence to Estimate the Reservoir Quality
+              Index (RQI) from Well Logs
+            </div>
+            <div class="item-subtitle">Graduation Project</div>
+            <ul class="bullet-list">
+              <li>
+                Used Techlog to process raw well log files and calculate core
+                petrophysical properties including shale content, effective
+                porosity, and absolute permeability.
+              </li>
+              <li>
+                Calculated the Reservoir Quality Index (RQI) across multiple
+                zones to isolate and identify key flow units.
+              </li>
+              <li>
+                With the assistance of Artificial Intelligence, engineered an
+                automated Python machine learning pipeline using the
+                Scikit-Learn library to directly ingest raw LAS files, parse
+                multi-dimensional arrays, and instantly predict RQI metrics.
+              </li>
+            </ul>
+            <div class="badge">Model Testing Accuracy Score: 0.82</div>
+          </div>
+        </div>
+        <div class="section" style="margin-top: 100px">
+          <h2>Technical Capabilities</h2>
+          <div class="timeline-item">
+            <ul
+              class="bullet-list"
+              style="list-style-type: none; padding-left: 0"
+            >
+              <li style="margin-bottom: 12px">
+                • Developed structural contour maps, isopach intervals, and 3D
+                terrain surface configurations using Golden Software Surfer to
+                evaluate subsurface distribution.
+              </li>
+
+              <li>
+                • Solved 44 logical and algorithmic challenges on LeetCode using
+                JavaScript to develop strong programmatic problem-solving
+                skills.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
